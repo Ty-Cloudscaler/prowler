@@ -10,8 +10,10 @@
       "Description": "This control checks whether there are any secrets stored in Secrets Manager .",
       "Attributes": [
         {
-          "ItemId": "secretsmanager",
-          "Service": "secretsmanager"
+          "ItemId": "SEC-APPS-01",
+          "Domain": "Security",
+          "Subdomain": "App Security",
+          "Severity": "Medium"
         }
       ],
       "Checks": [
