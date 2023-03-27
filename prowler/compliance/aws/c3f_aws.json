@@ -1,0 +1,22 @@
+{
+  "Framework": "C3F",
+  "Version": "1.0",
+  "Provider": "AWS",
+  "Description": "CloudScaler Cloud Control Framework.",
+  "Requirements": [
+    {
+      "Id": "secrets-manager",
+      "Name": "Secrets Manager",
+      "Description": "This control checks whether there are any secrets stored in Secrets Manager .",
+      "Attributes": [
+        {
+          "ItemId": "secretsmanager",
+          "Service": "secretsmanager"
+        }
+      ],
+      "Checks": [
+        "secretsmanager_list_secrets"
+      ]
+    }
+  ]
+}
