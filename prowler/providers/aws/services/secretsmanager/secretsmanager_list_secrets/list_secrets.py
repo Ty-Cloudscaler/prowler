@@ -13,7 +13,7 @@ class secretsmanager_list_secrets(Check):
             report.resource_id = secret.name
             report.resource_arn = secret.arn
             report.resource_tags = secret.tags
-            if secret.secrets == null:
+            if secret.secrets == None:
                 report.status = "FAIL"
                 report.status_extended = (
                     f"SecretsManager has no secrets, this could mean secrets are stored insecurely."

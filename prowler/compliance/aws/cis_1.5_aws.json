@@ -1331,6 +1331,22 @@
           "AuditProcedure": "Review routing tables of peered VPCs for whether they route all subnets of each VPC and whether that is necessary to accomplish the intended purposes for peering the VPCs.\n\n**From Command Line:**\n\n1. List all the route tables from a VPC and check if \"GatewayId\" is pointing to a _<peering\\_connection\\_id>_ (e.g. pcx-1a2b3c4d) and if \"DestinationCidrBlock\" is as specific as desired.\n```\naws ec2 describe-route-tables --filter \"Name=vpc-id,Values=<vpc_id>\" --query \"RouteTables[*].{RouteTableId:RouteTableId, VpcId:VpcId, Routes:Routes, AssociatedSubnets:Associations[*].SubnetId}\"\n```",
           "AdditionalInformation": "If an organization has AWS transit gateway implemented in their VPC architecture they should look to apply the recommendation above for \"least access\" routing architecture at the AWS transit gateway level in combination with what must be implemented at the standard VPC route table. More specifically, to route traffic between two or more VPCs via a transit gateway VPCs must have an attachment to a transit gateway route table as well as a route, therefore to avoid routing traffic between VPCs an attachment to the transit gateway route table should only be added where there is an intention to route traffic between the VPCs. As transit gateways are able to host multiple route tables it is possible to group VPCs by attaching them to a common route table.",
           "References": "https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/peering-configurations-partial-access.html:https://docs.aws.amazon.com/cli/latest/reference/ec2/create-vpc-peering-connection.html"
+        },
+        {
+          "Id": "5.6",
+          "Description": "Secrets in Secretsmanager",
+          "Checks": [
+            "secretsmanager_list_secrets"
+          ],
+          "Attributes": [
+            {
+              "Section": "App Security",
+              "AssessmentStatus": "automated",
+              "ID": "SEC-APS-01",
+              "Domain": "Security",
+              "Sub-domain": "App Security"
+            }
+          ]
         }
       ]
     }
