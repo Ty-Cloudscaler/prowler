@@ -4,22 +4,22 @@ from prowler.providers.aws.services.secretsmanager.secretsmanager_client import 
 )
 
 
-class secretsmanager_automatic_rotation_enabled(Check):
+class secretsmanager_list_secrets(Check):
     def execute(self):
         findings = []
-        for secret in secretsmanager_client.secrets():
+        for secret in secretsmanager_client.secrets.values():
             report = Check_Report_AWS(self.metadata())
             report.region = secret.region
             report.resource_id = secret.name
             report.resource_arn = secret.arn
             report.resource_tags = secret.tags
-            if secret.secrets == null:
-                report.status = "FAIL"
+            if secret.rotation_enabled:
+                report.status = "PASS"
                 report.status_extended = (
-                    f"SecretsManager secrets do not exist ."
+                    f"SecretsManager secret {secret.name} has rotation enabled."
                 )
             else:
-                report.status = "PASS"
+                report.status = "FAIL"
                 report.status_extended = (
                     f"SecretsManager secret {secret.name} has rotation disabled."
                 )
