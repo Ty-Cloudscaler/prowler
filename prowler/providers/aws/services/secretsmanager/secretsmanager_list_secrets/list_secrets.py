@@ -16,7 +16,7 @@ class secretsmanager_list_secrets(Check):
             if secret.secrets == null:
                 report.status = "FAIL"
                 report.status_extended = (
-                    f"SecretsManager has no secrets."
+                    f"SecretsManager has no secrets, this could mean secrets are stored insecurely."
                 )
             else:
                 report.status = "PASS"
