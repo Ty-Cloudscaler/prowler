@@ -13,13 +13,13 @@ class secretsmanager_automatic_rotation_enabled(Check):
             report.resource_id = secret.name
             report.resource_arn = secret.arn
             report.resource_tags = secret.tags
-            if secret.secrets == null:
-                report.status = "FAIL"
+            if secret.rotation_enabled:
+                report.status = "PASS"
                 report.status_extended = (
-                    f"SecretsManager secrets do not exist ."
+                    f"SecretsManager secret {secret.name} has rotation enabled."
                 )
             else:
-                report.status = "PASS"
+                report.status = "FAIL"
                 report.status_extended = (
                     f"SecretsManager secret {secret.name} has rotation disabled."
                 )

@@ -1,6 +1,6 @@
 {
   "Framework": "C3F",
-  "Version": "1.0",
+  "Version": "",
   "Provider": "AWS",
   "Description": "CloudScaler Cloud Control Framework.",
   "Requirements": [
