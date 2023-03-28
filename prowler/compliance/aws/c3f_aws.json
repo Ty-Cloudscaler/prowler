@@ -19,6 +19,23 @@
       "Checks": [
         "secretsmanager_list_secrets"
       ]
+    },
+    {
+      "Id": "s3",
+      "Name": "S3-Replication",
+      "Description": "This control checks whether S3 Bucket Replication is enabled.",
+      "Attributes": [
+        {
+          "ItemId": "OPS-R-03",
+          "Domain": "Operations",
+          "Subdomain": "Resilience",
+          "Severity": "Low"
+        }
+      ],
+      "Checks": [
+        "s3_bucket_replication"
+      ]
+
     }
-  ]
+    ]
 }
